@@ -31,6 +31,10 @@ export function Tasks() {
         event.target.setCustomValidity('Esse campo é obrigatório')
     }
 
+    interface tasks{
+        content: string;
+        complete: boolean
+    }
 
     function checkTask(task: string) {
         const tasks = allTasks.filter(itens => itens.content !== task)
