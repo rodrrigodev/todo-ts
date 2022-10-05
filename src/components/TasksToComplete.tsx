@@ -1,7 +1,7 @@
 import { CheckCircle,Circle, Trash } from "phosphor-react";
 import styles from './TasksToComplete.module.css'
 
-interface Ok{
+interface TaksToCompleteProp{
     content: string;
     complete: boolean;
     onCheckTask: (x: string)=> void;
@@ -9,7 +9,7 @@ interface Ok{
     onCountCompletes: (x:string)=> void
 }
 
-export function TaksToComplete({content, complete, onCheckTask, onDeleteTask, onCountCompletes}:Ok) {
+export function TaksToComplete({content, complete, onCheckTask, onDeleteTask, onCountCompletes}:TaksToCompleteProp) {
 
     function checkTask(){
         onCheckTask(content)

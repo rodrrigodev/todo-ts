@@ -9,7 +9,12 @@ import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
 export function Tasks() {
 
-    const [allTasks, setTasks] = useState([{content: "Levar o lixo para fora", complete: false}])
+interface Props {
+  content: string;
+  complete: boolean;
+}
+
+    const [allTasks, setTasks] = useState<Props[]>([])
     const [newTask, setNewTask] = useState('')
     const [totalTasks, setTotalTasks] = useState(0)
     const [tasksCompletes, setTasksCompletes] = useState(0)
@@ -39,7 +44,7 @@ export function Tasks() {
     function checkTask(task: string) {
         const tasks = allTasks.filter(itens => itens.content !== task)
         const changeState = allTasks.find(item => item.content === task)!
-        setTasks([...tasks, { content: changeState.content, complete: !changeState.complete }])
+        setTasks([...tasks, {content: changeState.content, complete: !changeState.complete }])
     }
 
     function deleteTask(task: string) {
