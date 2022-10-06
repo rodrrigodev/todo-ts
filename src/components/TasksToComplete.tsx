@@ -26,13 +26,13 @@ export function TaksToComplete({content, complete, onCheckTask, onDeleteTask, on
     return (
         <div className={styles.taskBox}>
 
-            
+            <div>
                 <button onClick={checkTask} className={complete?styles.check: styles.circle}>
                         {icon}
                 </button>
 
                 <p onClick={checkTask}>{content}</p>
-            
+            </div>
 
             <button onClick={deleteTask}
                     className={styles.trash}>

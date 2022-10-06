@@ -3,8 +3,13 @@
     background-color: var(--gray-500);
     border-radius: .5rem;
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem;
+}
+
+.taskBox > div{
+    display: flex;
     gap: .75rem;
 }
 
