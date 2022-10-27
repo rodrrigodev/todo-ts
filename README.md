@@ -22,13 +22,10 @@
   <br>
   
   <h2>Learnings</h2>
-  <p>
+  <p align="center">
   <a>⚪ States</a>
-  <br>
   <a>⚪ State Immutability</a>
-  <br>
   <a>⚪ Properties</a>
-  <br>
   <a>⚪Componentization</a> 
   </p>
 
