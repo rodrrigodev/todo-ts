@@ -34,7 +34,8 @@
   ### 🔍 Requirements
 
 <p>You will need to have the following tools installed on your computer:</p>
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+<a href="https://git-scm.com">⚪ Git</a> <br>
+<a href="https://nodejs.org/en/">⚪ Node</a>
 
 ### 🧑‍💻 Next steps
 
@@ -57,7 +58,6 @@ If you want to see the project code, you will need to have a good code editor in
 The recommendation is [Visual Studio Code](https://code.visualstudio.com/),
 but you can use any other, feel free.
 ```
-
 
 <br>
 
