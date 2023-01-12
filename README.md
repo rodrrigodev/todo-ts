@@ -1,9 +1,11 @@
 <h1>ToDo List - Rocketseat 🚀</h1>
 
 <p>This is a project written in react, it was developed during the first challenge of Rocketseat's ignite course. It is a task manager or to-do list.The main objective, besides building the application, was to develop the required features and practice the acquired knowledge.</p>
+I you want to test the project
+<a href="https://todo-ts-mu.vercel.app/">CLICK HERE<a/>.
 
-
-  <br>
+<br>
+<br>
 
   <img alt="" title="ToDo List" src="https://github.com/rodrrigodev/todo-ts/blob/main/src/assets/cap-1.png?raw=true" />
   <br>
@@ -28,36 +30,13 @@
   <a>⚪ Properties</a>
   <a>⚪Componentization</a> 
   </p>
-
   <br>
   
-  ### 🔍 Requirements
-
-<p>You will need to have the following tools installed on your computer:</p>
-<a href="https://git-scm.com">⚪ Git</a> <br>
-<a href="https://nodejs.org/en/">⚪ Node</a>
-
-### 🧑‍💻 Next steps
-
-```bash
-# Clone this repository
-$ git clone <https://github.com/rodrrigodev/todo-ts.git>
-
-# Access the project folder in terminal/cmd
-$ cd todo-ts
-
-# Install the dependencies
-$ npm install or npm i
-
-# Run the application
-$ npm run dev
-
-# The server will start running - Access: http://127.0.0.1:5173/
 
 If you want to see the project code, you will need to have a good code editor installed.
 The recommendation is [Visual Studio Code](https://code.visualstudio.com/),
 but you can use any other, feel free.
-```
+
 
 <br>
 
