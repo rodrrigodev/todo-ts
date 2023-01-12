@@ -5,16 +5,17 @@ import clipboard from '../assets/clipboard.svg'
 
 import { v4 as uuidv4 } from 'uuid';
 import styles from './Tasks.module.css'
-import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useEffect, useState } from 'react';
+interface Props {
+    content: string;
+    complete: boolean;
+}
 
 export function Tasks() {
 
-interface Props {
-  content: string;
-  complete: boolean;
-}
+    const tasksIsEmpty = localStorage.getItem("@todo-ts:tasks-1.0.0")
 
-    const [allTasks, setTasks] = useState<Props[]>([])
+    const [allTasks, setTasks] = useState<Props[]>(tasksIsEmpty ? JSON.parse(tasksIsEmpty) : [])
     const [newTask, setNewTask] = useState('')
     const [totalTasks, setTotalTasks] = useState(0)
     const [tasksCompletes, setTasksCompletes] = useState(0)
@@ -36,7 +37,7 @@ interface Props {
         event.target.setCustomValidity('Esse campo é obrigatório')
     }
 
-    interface tasks{
+    interface tasks {
         content: string;
         complete: boolean
     }
@@ -44,14 +45,14 @@ interface Props {
     function checkTask(task: string) {
         const tasks = allTasks.filter(itens => itens.content !== task)
         const changeState = allTasks.find(item => item.content === task)!
-        setTasks([...tasks, {content: changeState.content, complete: !changeState.complete }])
+        setTasks([...tasks, { content: changeState.content, complete: !changeState.complete }])
     }
 
     function deleteTask(task: string) {
         const tasksWithoutDeleted = allTasks.filter(item => item.content !== task)
         const findTaskToRemoveFromComplete = allTasks.find(item => item.content === task)!
         setTasks(tasksWithoutDeleted)
-        setTotalTasks(totalTasks - 1)
+        setTotalTasks(totalTasks > 0 ? totalTasks - 1 : 0)
         setTasksCompletes(findTaskToRemoveFromComplete.complete ? tasksCompletes - 1 : tasksCompletes)
     }
 
@@ -64,6 +65,13 @@ interface Props {
     }
 
     const newTaskEmpty = newTask.length === 0
+
+    useEffect(() => {
+        
+            const todoTs = JSON.stringify(allTasks)
+            localStorage.setItem("@todo-ts:tasks-1.0.0", todoTs)
+        
+    }, [allTasks])
 
     return (
 
@@ -103,27 +111,27 @@ interface Props {
 
                 {
                     allTasks.length ?
-                                        <div className={styles.taskItem}>
+                        <div className={styles.taskItem}>
 
-                                            {allTasks.map(task => {
-                                                return (
-                                                    <TaksToComplete
-                                                        key={uuidv4()}
-                                                        content={task.content}
-                                                        complete={task.complete}
-                                                        onCheckTask={checkTask}
-                                                        onDeleteTask={deleteTask}
-                                                        onCountCompletes={countCompletes}
-                                                    />
-                                                )
-                                            })}
-                                        </div>
-                                    :
-                                        <div className={styles.noTasksContainer}>
-                                            <img className={styles.noTaskImg} src={clipboard} alt="Caderno de anotação de tarefas" title='Caderno de anotação'/>
-                                            <p className={styles.noTaskPara1}>Você ainda não tem tarefas cadastradas</p>
-                                            <p className={styles.noTaskPara2}>Crie tarefas e organize seus itens a fazer</p>
-                                        </div>
+                            {allTasks.map(task => {
+                                return (
+                                    <TaksToComplete
+                                        key={uuidv4()}
+                                        content={task.content}
+                                        complete={task.complete}
+                                        onCheckTask={checkTask}
+                                        onDeleteTask={deleteTask}
+                                        onCountCompletes={countCompletes}
+                                    />
+                                )
+                            })}
+                        </div>
+                        :
+                        <div className={styles.noTasksContainer}>
+                            <img className={styles.noTaskImg} src={clipboard} alt="Caderno de anotação de tarefas" title='Caderno de anotação' />
+                            <p className={styles.noTaskPara1}>Você ainda não tem tarefas cadastradas</p>
+                            <p className={styles.noTaskPara2}>Crie tarefas e organize seus itens a fazer</p>
+                        </div>
                 }
 
 
