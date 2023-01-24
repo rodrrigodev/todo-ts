@@ -17,8 +17,8 @@ export function Tasks() {
 
     const [allTasks, setTasks] = useState<Props[]>(tasksIsEmpty ? JSON.parse(tasksIsEmpty) : [])
     const [newTask, setNewTask] = useState('')
-    const [totalTasks, setTotalTasks] = useState(0)
-    const [tasksCompletes, setTasksCompletes] = useState(0)
+    const [totalTasks, setTotalTasks] = useState(allTasks ? allTasks.length : 0)
+    const [tasksCompletes, setTasksCompletes] = useState(allTasks ? allTasks.filter((task)=>{ return task.complete !== false }).length : 0)
 
     function createTask(event: FormEvent) {
         event.preventDefault()
